@@ -19,8 +19,10 @@ vim.opt.listchars = { tab = "| ", trail = "·", nbsp = "␣" }
 vim.o.cursorline = true
 vim.o.scrolloff = 10
 vim.o.confirm = true
+vim.opt.tabstop = 4        -- Largeur d'une tabulation (affichage)
+vim.opt.shiftwidth = 4     -- Largeur d'indentation lors d'un ">>" ou autoindent
+vim.opt.expandtab = true   -- Utiliser des espaces au lieu de vraies tabulations
 --vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
-vim.keymap.set("n", "<leader>e", "<cmd>Oil --float<CR>")
 vim.keymap.set("i", "jk", "<Esc>")
 vim.keymap.set("n", "<left>", '<cmd>echo "Use h to move!!"<CR>')
 vim.keymap.set("n", "<right>", '<cmd>echo "Use l to move!!"<CR>')
@@ -31,3 +33,10 @@ vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right win
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 require("config.lazy")
+vim.api.nvim_create_autocmd('TextYankPost', {
+  desc = 'Highlight when yanking (copying) text',
+  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+  callback = function()
+    vim.hl.on_yank()
+  end,
+})
