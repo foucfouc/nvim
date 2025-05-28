@@ -20,7 +20,7 @@ vim.o.cursorline = true
 vim.o.scrolloff = 10
 vim.o.confirm = true
 --vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
-vim.keymap.set("n", "<leader>e", "<cmd>Lex | vertical resize 40<CR>")
+vim.keymap.set("n", "<leader>e", "<cmd>Oil --float<CR>")
 vim.keymap.set("i", "jk", "<Esc>")
 vim.keymap.set("n", "<left>", '<cmd>echo "Use h to move!!"<CR>')
 vim.keymap.set("n", "<right>", '<cmd>echo "Use l to move!!"<CR>')
